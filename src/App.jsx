@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css'
+import './App.css';
+import ListaPeliculas from './components/ListaPeliculas';
+import FormularioPelicula from './components/FormularioPelicula';
 
 const App = () => {
   const [peliculas, setPeliculas] = useState([]);
@@ -12,10 +14,8 @@ const App = () => {
   });
   const [peliculaEditando, setPeliculaEditando] = useState(null);
 
-  // URL de MockAPI
   const URL_PELICULAS = 'https://66fd5e87699369308954eeed.mockapi.io/api/v1/Pelicula';
 
-  // Obtener la lista de película
   useEffect(() => {
     const obtenerPeliculas = async () => {
       try {
@@ -28,16 +28,14 @@ const App = () => {
     obtenerPeliculas();
   }, []);
 
-  // Manejar los cambios en el form
-  const Cambio = (e) => {
+  const cambio = (e) => {
     setNuevaPelicula({
       ...nuevaPelicula,
       [e.target.name]: e.target.value,
     });
   };
 
-  // Agregar una nueva película
-  const AgregarPelicula = async () => {
+  const agregarPelicula = async () => {
     try {
       const respuesta = await axios.post(URL_PELICULAS, nuevaPelicula);
       setPeliculas([...peliculas, respuesta.data]);
@@ -47,14 +45,12 @@ const App = () => {
     }
   };
 
-  // Manejar la edición
-  const EditarPelicula = (pelicula) => {
+  const editarPelicula = (pelicula) => {
     setPeliculaEditando(pelicula);
     setNuevaPelicula(pelicula);
   };
 
-  // Actualizar una película existente
-  const ActualizarPelicula = async () => {
+  const actualizarPelicula = async () => {
     try {
       const respuesta = await axios.put(`${URL_PELICULAS}/${peliculaEditando.id}`, nuevaPelicula);
       setPeliculas(peliculas.map((pelicula) =>
@@ -67,8 +63,7 @@ const App = () => {
     }
   };
 
-  // Eliminar una película
-  const EliminarPelicula = async (id) => {
+  const eliminarPelicula = async (id) => {
     try {
       await axios.delete(`${URL_PELICULAS}/${id}`);
       setPeliculas(peliculas.filter((pelicula) => pelicula.id !== id));
@@ -78,64 +73,20 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="app">
       <h1>Lista de películas vistas</h1>
-
-      {/* Menú */}
-      <div className="menu">
-        <h2>{peliculaEditando ? 'Editar película' : 'Agregar película'}</h2>
-        <input
-          type="text"
-          name="titulo"
-          placeholder="Título"
-          value={nuevaPelicula.titulo}
-          onChange={Cambio}
-        />
-        <input
-          type="text"
-          name="fechaEstreno"
-          placeholder="Fecha de Estreno"
-          value={nuevaPelicula.fechaEstreno}
-          onChange={Cambio}
-        />
-        <input
-          type="text"
-          name="productor"
-          placeholder="Productor"
-          value={nuevaPelicula.productor}
-          onChange={Cambio}
-        />
-        <input
-          type="text"
-          name="portada"
-          placeholder="URL de la portada"
-          value={nuevaPelicula.portada}
-          onChange={Cambio}
-        />
-        <button onClick={peliculaEditando ? ActualizarPelicula : AgregarPelicula}>
-          {peliculaEditando ? 'Actualizar Película' : 'Agregar Película'}
-        </button>
-      </div>
-
-      {/* Mostrar la lista de películas */}
-      <ul>
-        {peliculas.map((pelicula) => (
-          <li key={pelicula.id}>
-            {pelicula.portada && (
-              <img
-                src={pelicula.portada}
-                alt={`Portada de ${pelicula.titulo}`}
-                style={{ width: '100px', height: '150px' }}
-              />
-            )}
-            <h3>{pelicula.titulo}</h3>
-            <p>Fecha de estreno: {pelicula.fechaEstreno}</p>
-            <p>Productor: {pelicula.productor}</p>
-            <button onClick={() => EditarPelicula(pelicula)}>Editar</button>
-            <button onClick={() => EliminarPelicula(pelicula.id)}>Borrar</button>
-          </li>
-        ))}
-      </ul>
+      <FormularioPelicula
+        peliculaEditando={peliculaEditando}
+        nuevaPelicula={nuevaPelicula}
+        cambio={cambio}
+        agregarPelicula={agregarPelicula}
+        actualizarPelicula={actualizarPelicula}
+      />
+      <ListaPeliculas
+        peliculas={peliculas}
+        editarPelicula={editarPelicula}
+        eliminarPelicula={eliminarPelicula}
+      />
     </div>
   );
 };

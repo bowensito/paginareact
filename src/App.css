@@ -98,3 +98,32 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+.app {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid-peliculas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pelicula-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.pelicula-item img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+}
+
+button {
+  margin: 5px;
+}
+
