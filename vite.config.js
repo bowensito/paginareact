@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'https://bowensito.github.io/paginareact',
+  base: 'paginareact',
   plugins: [react()],
 });
