@@ -1,4 +1,4 @@
-/* Centrar el contenido de la aplicación */
+/* Centrar */
 body {
   font-family: Arial, sans-serif;
   display: flex;
@@ -26,8 +26,6 @@ h2 {
   border-radius: 10px;
 }
 
-
-/* Estilo del formulario para agregar/editar películas */
 div > h2 {
   margin-top: 20px;
 }
@@ -38,7 +36,6 @@ div {
   align-items: center;
 }
 
-/* Contenedor para centrar la lista de películas */
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -47,7 +44,6 @@ ul {
   list-style-type: none;
 }
 
-/* Cada película dentro del grid */
 li {
   background-color: rgb(54, 54, 54);
   margin: 15px;
@@ -59,14 +55,12 @@ li {
   list-style-type: none;
 }
 
-/* Imágenes de portada */
 img {
   width: 100px;
   height: 150px;
   object-fit: cover;
 }
 
-/* Mantener el formulario siempre visible en la parte superior */
 div.menu {
   position: sticky;
   top: 0;
@@ -91,7 +85,6 @@ button:hover {
   background-color: #45a049;
 }
 
-/* Ajustes para el formulario de agregar/editar películas */
 input {
   margin: 5px;
   padding: 8px;
