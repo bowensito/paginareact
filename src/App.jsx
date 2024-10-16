@@ -12,7 +12,7 @@ const App = () => {
     productor: '',
     portada: ''
   });
-  const [peliculaEditando, setPeliculaEditando] = useState(null);
+  const [peliculaEditar, setPeliculaEditar] = useState(null);
 
   const URL_PELICULAS = 'https://66fd5e87699369308954eeed.mockapi.io/api/v1/Pelicula';
 
@@ -46,17 +46,17 @@ const App = () => {
   };
 
   const editarPelicula = (pelicula) => {
-    setPeliculaEditando(pelicula);
+    setPeliculaEditar(pelicula);
     setNuevaPelicula(pelicula);
   };
 
   const actualizarPelicula = async () => {
     try {
-      const respuesta = await axios.put(`${URL_PELICULAS}/${peliculaEditando.id}`, nuevaPelicula);
+      const respuesta = await axios.put(`${URL_PELICULAS}/${peliculaEditar.id}`, nuevaPelicula);
       setPeliculas(peliculas.map((pelicula) =>
-        pelicula.id === peliculaEditando.id ? respuesta.data : pelicula
+        pelicula.id === peliculaEditar.id ? respuesta.data : pelicula
       ));
-      setPeliculaEditando(null);
+      setPeliculaEditar(null);
       setNuevaPelicula({ titulo: '', fechaEstreno: '', productor: '', portada: '' });
     } catch (error) {
       console.error('Error al actualizar la película', error);
@@ -76,7 +76,7 @@ const App = () => {
     <div className="app">
       <h1>Lista de películas vistas</h1>
       <FormularioPelicula
-        peliculaEditando={peliculaEditando}
+        peliculaEditar={peliculaEditar}
         nuevaPelicula={nuevaPelicula}
         cambio={cambio}
         agregarPelicula={agregarPelicula}

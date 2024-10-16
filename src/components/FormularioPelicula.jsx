@@ -1,9 +1,9 @@
 import React from 'react';
 
-const FormularioPelicula = ({ peliculaEditando, nuevaPelicula, cambio, agregarPelicula, actualizarPelicula }) => {
+const FormularioPelicula = ({ peliculaEditar, nuevaPelicula, cambio, agregarPelicula, actualizarPelicula }) => {
   return (
     <div>
-      <h2>{peliculaEditando ? 'Editar Película' : 'Agregar Película'}</h2>
+      <h2>{peliculaEditar ? 'Editar Película' : 'Agregar Película'}</h2>
       <input
         type="text"
         name="titulo"
@@ -32,8 +32,8 @@ const FormularioPelicula = ({ peliculaEditando, nuevaPelicula, cambio, agregarPe
         value={nuevaPelicula.portada}
         onChange={cambio}
       />
-      <button onClick={peliculaEditando ? actualizarPelicula : agregarPelicula}>
-        {peliculaEditando ? 'Actualizar Película' : 'Agregar Película'}
+      <button onClick={peliculaEditar ? actualizarPelicula : agregarPelicula}>
+        {peliculaEditar ? 'Actualizar Película' : 'Agregar Película'}
       </button>
     </div>
   );
