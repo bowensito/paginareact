@@ -26,7 +26,7 @@ const FormularioPelicula = ({ peliculaEditar, nuevaPelicula, cambio, agregarPeli
       />
       
       <input
-        type="text"
+        type="date"
         name="fechaEstreno"
         placeholder="Fecha de Estreno"
         value={nuevaPelicula.fechaEstreno}
