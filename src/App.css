@@ -120,7 +120,27 @@ input {
   object-fit: cover;
 }
 
+.boton2:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+.boton1:hover {
+  background-color: rgb(32, 16, 172);
+}
+
 button {
   margin: 5px;
+}
+
+.pelicula-item {
+  background-color:rgb(34, 30, 30);
+}
+
+.card-text{
+  color:antiquewhite;
+}
+
+.card-title{
+  color: antiquewhite;
 }
 
