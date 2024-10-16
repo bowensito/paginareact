@@ -2,8 +2,9 @@ import React from 'react';
 
 const FormularioPelicula = ({ peliculaEditar, nuevaPelicula, cambio, agregarPelicula, actualizarPelicula }) => {
 
+  // Función para manejar el envío del formulario
   const manejarSubmit = (e) => {
-    e.preventDefault(); //recargar pagina
+    e.preventDefault();  // Evita que se recargue la página
     if (peliculaEditar) {
       actualizarPelicula();
     } else {
@@ -21,7 +22,7 @@ const FormularioPelicula = ({ peliculaEditar, nuevaPelicula, cambio, agregarPeli
         placeholder="Título"
         value={nuevaPelicula.titulo}
         onChange={cambio}
-        required
+        required  // Campo obligatorio
       />
       
       <input
@@ -30,7 +31,7 @@ const FormularioPelicula = ({ peliculaEditar, nuevaPelicula, cambio, agregarPeli
         placeholder="Fecha de Estreno"
         value={nuevaPelicula.fechaEstreno}
         onChange={cambio}
-        required
+        required  // Campo obligatorio
       />
       
       <input
@@ -39,7 +40,7 @@ const FormularioPelicula = ({ peliculaEditar, nuevaPelicula, cambio, agregarPeli
         placeholder="Productor"
         value={nuevaPelicula.productor}
         onChange={cambio}
-        required
+        required  // Campo obligatorio
       />
       
       <input
@@ -48,7 +49,7 @@ const FormularioPelicula = ({ peliculaEditar, nuevaPelicula, cambio, agregarPeli
         placeholder="URL de la portada"
         value={nuevaPelicula.portada}
         onChange={cambio}
-        required
+        required  // Campo obligatorio
       />
       
       <button type="submit">

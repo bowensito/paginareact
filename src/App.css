@@ -20,6 +20,7 @@ h1 {
 }
 
 h2 {
+  justify-content: center;
   text-align:center;
   display: flex;
   background-color: rgb(54, 54, 54);
