@@ -1,28 +1,18 @@
 import React from 'react';
-
 const PeliculaItem = ({ pelicula, editarPelicula, eliminarPelicula }) => {
   return (
-    <div className="pelicula-item card" style={{ width: '18rem' }}>
+    <div className="pelicula-item">
       <img
         src={pelicula.portada}
         alt={`Portada de ${pelicula.titulo}`}
-        className="card-img-top"
+        className="portada"
       />
-      <div className="card-body">
-        <h3 className="card-title">{pelicula.titulo}</h3>
-        <p className="card-text">Fecha de Estreno: {pelicula.fechaEstreno}</p>
-        <p className="card-text">Productor: {pelicula.productor}</p>
-        <div className="d-flex justify-content-between">
-          <button className="btn btn-primary" onClick={() => editarPelicula(pelicula)}>
-            Editar
-          </button>
-          <button className="btn btn-danger" onClick={() => eliminarPelicula(pelicula.id)}>
-            Borrar
-          </button>
-        </div>
-      </div>
+      <h3>{pelicula.titulo}</h3>
+      <p>Fecha de Estreno: {pelicula.fechaEstreno}</p>
+      <p>Productor: {pelicula.productor}</p>
+      <button onClick={() => editarPelicula(pelicula)}>Editar</button>
+      <button onClick={() => eliminarPelicula(pelicula.id)}>Borrar</button>
     </div>
   );
 };
-
 export default PeliculaItem;
